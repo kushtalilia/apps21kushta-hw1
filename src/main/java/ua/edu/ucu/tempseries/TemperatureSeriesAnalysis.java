@@ -53,7 +53,7 @@ public class TemperatureSeriesAnalysis {
         for (int i = 0; i < temperatureSeries.length; i++) {
             sum += Math.pow((temperatureSeries[i] - avarage), 2);
         }
-        double result = Math.sqrt(sum / temperatureSeries.length - 1);
+        double result = Math.sqrt(sum / temperatureSeries.length);
         return result;
     }
 
@@ -79,7 +79,7 @@ public class TemperatureSeriesAnalysis {
     }
 
     public double min() {
-        return findClosest(Double.MIN_VALUE);
+        return findClosest(Double.NEGATIVE_INFINITY);
     }
 
     public double max() {
@@ -116,6 +116,7 @@ public class TemperatureSeriesAnalysis {
                     IllegalArgumentException();
         } else {
             double[] biggerValues = new double[temperatureSeries.length];
+            int counter = 0;
             for (int i = 0; i < temperatureSeries.length; i++) {
                 if (temperatureSeries[i] > tempValue) {
                     biggerValues[i] = temperatureSeries[i];
