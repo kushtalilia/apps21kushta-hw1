@@ -52,7 +52,8 @@ public class TemperatureSeriesAnalysis {
         double avarage = average();
         double sum = 0;
         for (int i = 0; i < temperatureSeries.length; i++) {
-            sum += (temperatureSeries[i] - avarage) * (temperatureSeries[i] - avarage);
+            sum += (temperatureSeries[i] - avarage)
+                    * (temperatureSeries[i] - avarage);
         }
         double result = Math.sqrt(sum / temperatureSeries.length);
         return result;
@@ -147,7 +148,8 @@ public class TemperatureSeriesAnalysis {
             if (initialLength == 0) {
                 temperatureSeries = Arrays.copyOf(temperatureSeries, 1);
             } else if (temperatureSeries.length == initialLength) {
-                temperatureSeries = Arrays.copyOf(temperatureSeries, 2 * temperatureSeries.length);
+                temperatureSeries = Arrays.copyOf(temperatureSeries,
+                        2 * temperatureSeries.length);
             }
             temperatureSeries[initialLength] = temps[i];
             this.initialLength += 1;
