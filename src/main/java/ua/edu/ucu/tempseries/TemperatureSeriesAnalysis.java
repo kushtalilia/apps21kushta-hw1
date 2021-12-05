@@ -5,9 +5,9 @@ import java.util.Arrays;
 import java.util.InputMismatchException;
 
 public class TemperatureSeriesAnalysis {
+    private static final int MIN_VALUE = -273;
     private double[] temperatureSeries;
     private int initialLength;
-    private static final int MIN_VALUE = -273;
 
     public TemperatureSeriesAnalysis() {
         this.temperatureSeries = new double[]{};
@@ -17,7 +17,8 @@ public class TemperatureSeriesAnalysis {
         for (double temp : temperatureSeries) {
             if (temp < MIN_VALUE) {
                 throw new
-                        InputMismatchException("The temperature exceeds minimum value!");
+                        InputMismatchException("The temperature "
+                        + "exceeds minimum value!");
             }
         }
         this.temperatureSeries = temperatureSeries;
@@ -51,7 +52,7 @@ public class TemperatureSeriesAnalysis {
         double avarage = average();
         double sum = 0;
         for (int i = 0; i < temperatureSeries.length; i++) {
-            sum += Math.pow((temperatureSeries[i] - avarage), 2);
+            sum += (temperatureSeries[i] - avarage) * (temperatureSeries[i] - avarage);
         }
         double result = Math.sqrt(sum / temperatureSeries.length);
         return result;
@@ -139,7 +140,8 @@ public class TemperatureSeriesAnalysis {
         for (int i = 0; i < temps.length; i++) {
 
             if (temps[i] < MIN_VALUE) {
-                throw new InputMismatchException("The temperature exceeds minimum value!");
+                throw new InputMismatchException("The temperature "
+                        + "exceeds minimum value!");
             }
 
             if (initialLength == 0) {
